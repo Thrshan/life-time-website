@@ -1,0 +1,64 @@
+ <%- include("partials/header"); -%>
+
+
+<div class="full-content">
+
+
+
+ <div class="login-wrap <%-wrap%>">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Details</label>
+            <!-- <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label> -->
+            <!-- <input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab">Forgot Password</label> -->
+            <form method="POST" action="/" name="DOBform" class="login-form" onsubmit="return validateForm()" >
+                <!-- <div class="sign-in-htm"> -->
+                    <div class="group">
+                        <label class="label">Date of birth</label>
+                        <input name="birthDay" class="input" placeholder="dd/ mm/ yyyy" onfocus="(this.type='date')" onfocusout="(this.type='text')">
+                    </div>
+                    <div class="group">
+                        <label class="label">Life expectancy</label>
+                        <input name="totalYears" type="number" class="input" placeholder="75 years">
+                    </div>
+                    <div class="group">
+                        <button type="submit" class="button" value="Let's See">Let's See</button>
+                    </div>
+                    <div class="hr"></div>
+                <!-- </div> -->
+                <!-- <div class="for-pwd-htm">
+                    <div class="group">
+                        <label for="user" class="label">Username or Email</label>
+                        <input id="user" type="text" class="input">
+                    </div>
+                    <div class="group">
+                        <input type="submit" class="button" value="Reset Password">
+                    </div>
+                    <div class="hr"></div>
+                </div> -->
+            </form>
+        </div>
+    </div>
+    
+ <div class="main-content <%=mainBlur%>">
+     <div class="heading">
+         <h1>Weeks left to live</h1>
+     </div>
+     <div class="cover">
+         <% for(let i = 0 ; i < totalBlock ; i++){ %>
+         <% let checked = "";%>
+         <%if (i < fillBlock) {%>
+         <%checked = " checked";%>
+         <%}%>
+        <div class="box<%=checked%>">
+         <span class="hoverMsg"><%=fromDates[i]%> - <%=toDates[i]%></span>
+     </div>
+     <% } %>
+ </div>
+ <div class="percent">
+     <h2><%= (fillBlock * 100 / totalBlock).toFixed(2) %>%<br>Of your life is over</h2>
+ </div>
+ </div>
+</div>
+
+
+ <%- include("partials/footer"); -%>
