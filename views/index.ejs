@@ -1,45 +1,45 @@
  <%- include("partials/header"); -%>
 
-<div class="full-content">
- <div class="login-wrap <%-wrap%>">
-        <div class="login-html">
-            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Details</label>
-            <form method="POST" action="/" name="DOBform" class="login-form" onsubmit="return validateForm()" >
-                    <div class="group">
-                        <label class="label">Date of birth</label>
-                        <input name="birthDay" class="input" placeholder="dd/ mm/ yyyy" onfocus="(this.type='date')" onfocusout="(this.type='text')">
-                    </div>
-                    <div class="group">
-                        <label class="label">Life expectancy</label>
-                        <input name="totalYears" type="number" class="input" placeholder="75 years">
-                    </div>
-                    <div class="group">
-                        <button type="submit" class="button" value="Let's See">Let's See</button>
-                    </div>
-                    <div class="hr"></div>
-            </form>
+ <div class="full-content">
+     <div class="login-wrap <%-wrap%>">
+         <div class="login-html">
+             <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1"
+                 class="tab">Details</label>
+             <form method="POST" action="/" name="DOBform" class="login-form" onsubmit="return validateForm()">
+                 <div class="group">
+                     <label class="label">Date of birth</label>
+                     <input name="birthDay" class="input" placeholder="dd/ mm/ yyyy" onfocus="(this.type='date')"
+                         onfocusout="(this.type='text')">
+                 </div>
+                 <div class="group">
+                     <label class="label">Life expectancy</label>
+                     <input name="totalYears" type="number" class="input" placeholder="75 years">
+                 </div>
+                 <div class="group">
+                     <button type="submit" class="button" value="Let's See">Let's See</button>
+                 </div>
+                 <div class="hr"></div>
+             </form>
+         </div>
+     </div>
+
+     <div class="main-content <%=mainBlur%>">
+        <div class="heading">
+            <h1 class="noselect">Weeks left to live</h1>
+        </div>
+        <div class="cover">
+             <% for(let i = 0 ; i < totalBlock ; i++){ -%>
+             <% let checked = ""; -%>
+             <% if (i < fillBlock) {checked = " checked";} -%>
+            <div class="box<%= checked -%>">
+                <span class="hoverMsg"><%= fromDates[i] -%> - <%= toDates[i] -%></span>
+            </div>
+            <% } -%>
+        </div>
+    <div class="percent">
+        <h2><%= (fillBlock * 100 / totalBlock).toFixed(2) %>%<br>Of your life is over</h2>
         </div>
     </div>
-    
- <div class="main-content <%=mainBlur%>">
-     <div class="heading">
-         <h1 class="noselect">Weeks left to live</h1>
-     </div>
-     <div class="cover">
-         <% for(let i = 0 ; i < totalBlock ; i++){ %>
-         <% let checked = "";%>
-         <%if (i < fillBlock) {%>
-         <%checked = " checked";%>
-         <%}%>
-        <div class="box<%=checked%>">
-         <span class="hoverMsg"><%=fromDates[i]%> - <%=toDates[i]%></span>
-     </div>
-     <% } %>
  </div>
- <div class="percent">
-     <h2><%= (fillBlock * 100 / totalBlock).toFixed(2) %>%<br>Of your life is over</h2>
- </div>
- </div>
-</div>
 
  <%- include("partials/footer"); -%>

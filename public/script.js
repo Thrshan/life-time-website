@@ -1,5 +1,5 @@
+let windowWidth = $(window).width();
 $(".box").hover(function (event) {
-    let windowWidth = $(window).width();
     if (event.clientX > (windowWidth / 2)) {
         $(this).find("span").addClass("to-left");
     }
